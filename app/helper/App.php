@@ -5,5 +5,3 @@
     use Query;
     use Redirect;
  }
-
-?>

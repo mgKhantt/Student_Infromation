@@ -49,37 +49,20 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Student_Information</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Student Informations</h1>
                     </div>
 
                     <div class="row">
                         <div class="col-md-12">
                             <?php
-                            // $connection = new Connection();
-                            // $conn = $connection->connect();
-                            
-                            // $sql = "select * from customers where country = 'UK' ";
-                            // $result = $conn->query($sql);
-                            // print_r($result);
-                            
-                            // $connection->disconnect($conn);
-                            
                             $app = new App();
-                            $sql = "select * from Student_Information";
+                            $sql = "select * from Student_Information ORDER BY Student_Information.Roll_Number ASC";
                             $result = $app->selectList($sql);
-
-
-                            // $app->redirect();
-                            // echo "<br>";
-
-                            // $conn = $app->connect();
-                            // print_r($conn);
-
                             ?>
 
-                            <table class="table">
+                            <table class="table table-info table-bordered">
                                 <thead>
-                                    <tr>
+                                    <tr class="text-primary">
                                         <th scope="col">Roll Number</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Phone Number</th>
@@ -90,10 +73,10 @@
                                     <?php
                                     while ($row = $result->fetch_assoc()) {
                                         echo "<tr>";
-                                        echo "<td>{$row['Roll_Number']}</td>";
-                                        echo "<td>{$row['Name']}</td>";
-                                        echo "<td>{$row['Phone_Number']}</td>";
-                                        echo "<td>{$row['Gmail']}</td>";
+                                        echo "<td class= 'text-dark'>{$row['Roll_Number']}</td>";
+                                        echo "<td class= 'text-dark'>{$row['Name']}</td>";
+                                        echo "<td class= 'text-dark'>{$row['Phone_Number']}</td>";
+                                        echo "<td class= 'text-dark'>{$row['Gmail']}</td>";
                                         echo "<tr>";
                                     }
                                     ?>

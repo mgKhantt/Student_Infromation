@@ -1,3 +1,5 @@
+<?php include "../../helper/App.php" ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,15 +48,51 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Update</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Edit</h1>
                         
                     </div>
 
                     <div class="row">
                         <div class="col-md-12">
+                            <a href="./list.php" class="btn btn-primary">Back</a>
+                            <hr>
+
                             <?php 
-                                
+                                $id = $_REQUEST['id'];
+
+                                // echo $id;
+                                $app = new App();
+                                $sql = "select * from Student_Information where id = " . $id;
+                                $data = $app->selectOne($sql);
+
+                                // print_r($data);
                             ?>
+                            <form action="http://localhost/Team-7/app/controllers/edit.php" method="post">
+                                <input type="hidden" name="id" value="<?php echo $id?>">
+                                <div class="mb-3">
+                                    <label class="form-label">Roll Number</label>
+                                    <input type="text" class="form-control" name="rollNumber" required value="<?php echo $data['Roll_Number'] ?>">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Name</label>
+                                    <input type="text" class="form-control" name="name" placeholder="Enter your name" value="<?php echo $data['Name'] ?>" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Phone Number</label>
+                                    <input type="text" class="form-control" name="phoneNumber" placeholder="09123456789" value="<?php echo $data['Phone_Number'] ?>" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Gmail</label>
+                                    <input type="text" class="form-control" name="student_gmail" placeholder="name@gmail.com" value="<?php echo $data['Gmail']?>" required>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                     
